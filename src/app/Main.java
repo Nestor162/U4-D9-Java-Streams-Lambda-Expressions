@@ -1,5 +1,6 @@
 package app;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -45,7 +46,7 @@ public class Main {
 
 		Customer customer1 = new Customer("Mario", 2);
 		Customer customer2 = new Customer("Chiara", 1);
-		Customer customer3 = new Customer("Giovanni", 3);
+		Customer customer3 = new Customer("Giovanni", 2);
 
 		Order order1 = new Order("pending", list1, customer1);
 		Order order2 = new Order("pending", list2, customer2);
@@ -59,6 +60,7 @@ public class Main {
 		exercise1(generalList);
 		exercise2(orderList);
 		exercise3(generalList);
+		exercise4(orderList);
 
 	}
 
@@ -98,7 +100,6 @@ public class Main {
 				product -> product.getPrice() - (product.getPrice() * 10 / 100))
 				.toList();
 
-//		boyProducts.forEach(product -> product.setPrice(0))
 		for (Product bProduct : boyProducts) {
 			boyDiscountedPrices
 					.forEach(newPrice -> bProduct.setPrice(newPrice));
@@ -108,6 +109,24 @@ public class Main {
 		System.out.println("Prodotti categoria Boys con prezzo scontato: "
 				+ System.lineSeparator() + boyProducts
 				+ System.lineSeparator());
+	}
+
+	private static void exercise4(List<Order> orderList) {
+
+		LocalDate startDate = LocalDate.of(2023, 5, 03);
+		LocalDate endDate = LocalDate.of(2023, 5, 20);
+
+		Predicate<Order> isTier2Customer = order -> order.getCustomer()
+				.getTier() == 2;
+
+		Predicate<Order> isOrderBetweenDates = order -> order.getOrderDate()
+				.isAfter(startDate) && order.getOrderDate().isBefore(endDate);
+
+		List<Order> Tier2ProductsDates = orderList.stream()
+				.filter(isTier2Customer.and(isOrderBetweenDates)).toList();
+
+		System.out.println("I prodotti che soddisfano i requisiti sono: "
+				+ System.lineSeparator() + Tier2ProductsDates);
 	}
 
 }
