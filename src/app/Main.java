@@ -28,13 +28,19 @@ public class Main {
 		productList.addProduct(p6);
 		productList.addProduct(p7);
 
-		// Predicates
+		exercise1(productList);
+
+	}
+
+	public static void exercise1(ProductList productList) {
+
 		Predicate<Product> isBookAndExpensive = p -> p.getCategory().equals("Books") && p.getPrice() > 100;
 
-		List<Product> filteredProducts = productList.getProductList().stream().filter(isBookAndExpensive).toList();
+		List<Product> filteredProducts = productList.getProductList().stream()
+
+				.filter(isBookAndExpensive).toList();
 
 		System.out.println("Prodotti nella categoria Libri che costano piú di 100 euro: \n " + filteredProducts);
-
 	}
 
 }

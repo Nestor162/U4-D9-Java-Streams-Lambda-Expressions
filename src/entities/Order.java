@@ -17,8 +17,8 @@ public class Order {
 
 		this.id = generateId();
 		this.status = status;
-		this.orderDate = orderDate;
-		this.deliverDate = deliverDate;
+		this.orderDate = LocalDate.now();
+		this.deliverDate = LocalDate.now().plusDays(7);
 		this.products = products;
 		this.customer = customer;
 	}
