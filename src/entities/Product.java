@@ -3,11 +3,13 @@ package entities;
 import java.util.Random;
 
 public class Product {
+	// Attributi
 	private long id;
 	private String name;
 	private String category;
 	private double price;
 
+	// Costruttore
 	public Product(String name, String category, double price) {
 		this.id = generateId();
 		this.name = name;
@@ -20,6 +22,7 @@ public class Product {
 		return rand.nextLong();
 	}
 
+	// Getters e Setters
 	public long getId() {
 		return id;
 	}
@@ -50,6 +53,11 @@ public class Product {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", category=" + category + ", price=" + price + "]\n";
 	}
 
 }
