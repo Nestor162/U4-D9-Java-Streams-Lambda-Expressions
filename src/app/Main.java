@@ -36,12 +36,12 @@ public class Main {
 		list1.add(p7);
 
 		List<Product> list2 = new ArrayList<>();
-		list1.add(p1);
-		list1.add(p3);
-		list1.add(p7);
+		list2.add(p1);
+		list2.add(p3);
+		list2.add(p7);
 
 		List<Product> list3 = new ArrayList<>();
-		list1.add(p5);
+		list3.add(p5);
 
 		Customer customer1 = new Customer("Mario", 2);
 		Customer customer2 = new Customer("Chiara", 1);
@@ -74,11 +74,12 @@ public class Main {
 
 	public static void exercise2(List<Order> orderList) {
 
-		List<Order> orderBabyCategory = orderList.stream()
-				.filter(order -> order.getProducts().stream().anyMatch(product -> product.getCategory().equals("Baby")))
-				.toList();
+		Predicate<Order> isProductInBabyCategory = o -> o.getProducts().stream()
+				.anyMatch(product -> product.getCategory().equals("Baby"));
 
-		System.out.println("Ordini contenenti prodotti nella categoria Baby: \n" + orderBabyCategory);
+		List<Order> orderBabyCategory = orderList.stream().filter(isProductInBabyCategory).toList();
+
+		System.out.println("Ordini contenenti prodotti nella categoria Baby: \n" + orderBabyCategory.toString());
 	}
 
 }
