@@ -7,7 +7,7 @@ public class Customer {
 	String name;
 	int tier;
 
-	protected Customer(Long id, String name, int tier) {
+	public Customer(String name, int tier) {
 
 		this.id = generateId();
 		this.name = name;
