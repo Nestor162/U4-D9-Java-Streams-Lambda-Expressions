@@ -19,4 +19,9 @@ public class Customer {
 		return rand.nextLong();
 	}
 
+	@Override
+	public String toString() {
+		return name;
+	}
+
 }

@@ -77,8 +77,9 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", status=" + status + ", orderDate=" + orderDate + ", deliverDate=" + deliverDate
-				+ " customer=" + customer + "] " + System.lineSeparator();
+		return "Order [id=" + id + ", status=" + status + ", orderDate="
+				+ orderDate + ", deliverDate=" + deliverDate + " customer="
+				+ customer.toString() + "] " + System.lineSeparator();
 	}
 
 }
